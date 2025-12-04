@@ -65,7 +65,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       if (splitType === 'chars' || splitType === 'words, chars') {
         // Split into characters
         const chars = originalText.split('')
-        chars.forEach((char, index) => {
+        chars.forEach((char) => {
           const span = document.createElement('span')
           span.className = 'split-char'
           span.textContent = char === ' ' ? '\u00A0' : char
@@ -75,7 +75,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       } else if (splitType === 'words') {
         // Split into words
         const words = originalText.split(/(\s+)/)
-        words.forEach((word, index) => {
+        words.forEach((word) => {
           if (word.trim()) {
             const span = document.createElement('span')
             span.className = 'split-word'

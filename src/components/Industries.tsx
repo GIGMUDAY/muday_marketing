@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Eye, Users, TrendingUp, UserCheck, FileText, Settings } from 'lucide-react'
 import { StickyScroll } from './StickyScroll'
 import AOS from 'aos'

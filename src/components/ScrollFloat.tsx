@@ -90,8 +90,13 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
 
   const Component = as as keyof JSX.IntrinsicElements
 
+  const props: any = {
+    className: `scroll-float ${containerClassName}`,
+    ref: containerRef,
+  }
+
   return (
-    <Component ref={containerRef as any} className={`scroll-float ${containerClassName}`}>
+    <Component {...props}>
       <span className={`scroll-float-text ${textClassName}`}>{splitText}</span>
     </Component>
   )

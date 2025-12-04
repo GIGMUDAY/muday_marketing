@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import AOS from 'aos'
-import { Mail, Phone, MapPin } from 'lucide-react'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -27,11 +26,6 @@ const Contact = () => {
     }
   }, [])
 
-  const handleFormSubmit = (formData: FormData) => {
-    const data = Object.fromEntries(formData)
-    console.log('Form submitted:', data)
-    alert('Thank you for your message! We will get back to you soon.')
-  }
 
   return (
     <section id="contact" ref={ref} className="section-commen turnYourVision bg-black dark:bg-black" style={{ backgroundColor: '' }}>

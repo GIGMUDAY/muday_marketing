@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useInView } from 'framer-motion'
 import AOS from 'aos'
 
 const Process = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, margin: '-100px' })
 
   useEffect(() => {
     // Refresh AOS on component mount
