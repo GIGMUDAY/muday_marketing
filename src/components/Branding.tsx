@@ -1,13 +1,33 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
+interface SubField {
+  id: string
+  label: string
+  required?: boolean
+}
+
+interface Question {
+  id: string
+  label: string
+  description?: string
+  type: 'text' | 'textarea' | 'group' | 'title'
+  required?: boolean
+  subFields?: SubField[]
+}
+
+interface Step {
+  title: string
+  questions: Question[]
+}
+
 const Branding = () => {
   const [open, setOpen] = useState(false)
   const [step, setStep] = useState(0)
   const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState<Record<string, string>>({})
 
-  const steps = [
+  const steps: Step[] = [
     {
       title: 'Client information',
       questions: [

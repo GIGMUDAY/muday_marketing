@@ -6,7 +6,6 @@ import AOS from 'aos'
 
 const Process = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, margin: '-100px' })
 
   useEffect(() => {
     // Refresh AOS on component mount

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Label } from './ui/label'
 import { Input } from './ui/input'
-import { Github, Mail, Send } from 'lucide-react'
+import { Github, Mail } from 'lucide-react'
 
 // Simple className utility function
 const cn = (...classes: (string | undefined | null | false)[]): string => {

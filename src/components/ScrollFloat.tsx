@@ -89,11 +89,15 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger])
 
   const Component = as as keyof JSX.IntrinsicElements
+  const props: any = {
+    ref: containerRef,
+    className: `scroll-float ${containerClassName}`,
+  }
 
-  return (
-    <Component ref={containerRef as any} className={`scroll-float ${containerClassName}`}>
-      <span className={`scroll-float-text ${textClassName}`}>{splitText}</span>
-    </Component>
+  return React.createElement(
+    Component,
+    props,
+    <span className={`scroll-float-text ${textClassName}`}>{splitText}</span>
   )
 }
 

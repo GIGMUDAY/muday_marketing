@@ -10,7 +10,7 @@ export type Card = {
   background?: string;
 };
 
-export function Carousel({ items, initialScroll = 0 }: { items: JSX.Element[]; initialScroll?: number }) {
+export function Carousel({ items, initialScroll: _initialScroll = 0 }: { items: JSX.Element[]; initialScroll?: number }) {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -99,7 +99,7 @@ export function Carousel({ items, initialScroll = 0 }: { items: JSX.Element[]; i
   );
 }
 
-export function Card({ card, index, layout = false }: { card: Card; index: number; layout?: boolean }) {
+export function Card({ card, index: _index, layout: _layout = false }: { card: Card; index: number; layout?: boolean }) {
   const [hovered, setHovered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 

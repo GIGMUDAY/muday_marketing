@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import './StackedCards.css';
 
 export interface StackedCardProps {
@@ -58,9 +58,9 @@ const StackedCard: React.FC<StackedCardProps> = ({ children, index }) => {
 const StackedCards: React.FC<StackedCardsProps> = ({
   children,
   className = '',
-  cardGap = 30,
-  scaleFactor = 0.95,
-  rotationFactor = 2,
+  cardGap: _cardGap = 30,
+  scaleFactor: _scaleFactor = 0.95,
+  rotationFactor: _rotationFactor = 2,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 

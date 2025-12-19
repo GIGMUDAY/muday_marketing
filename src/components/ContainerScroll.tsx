@@ -73,7 +73,7 @@ const Header = ({ scrollYProgress, titleComponent }: { scrollYProgress: any; tit
 const Card = ({
   rotate,
   scale,
-  translate,
+  translate: _translate,
   children,
 }: {
   rotate: any

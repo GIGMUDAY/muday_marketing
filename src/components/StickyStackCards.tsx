@@ -11,7 +11,7 @@ export interface StickyStackCardsProps {
   className?: string;
 }
 
-const StickyStackCard: React.FC<StickyStackCardProps> = ({ children, index }) => {
+const StickyStackCard: React.FC<StickyStackCardProps> = ({ children, index: _index }) => {
   return (
     <section className="sticky-card-section">
       <div className="sticky-card">
