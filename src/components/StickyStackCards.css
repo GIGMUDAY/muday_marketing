@@ -1,0 +1,85 @@
+.sticky-stack-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Each section creates scroll space */
+.sticky-card-section {
+  position: relative;
+  height: 120vh;
+}
+
+/* Sticky card – this is what "sticks" while you scroll */
+.sticky-card {
+  position: sticky;
+  top: 12vh;
+  width: 100%;
+  transform-origin: top center;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  z-index: 1;
+}
+
+/* Style the article/content inside the sticky card */
+.sticky-card > article {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 28px;
+  box-shadow:
+    0 22px 45px rgba(15, 23, 42, 0.35),
+    0 0 0 1px rgba(148, 163, 184, 0.4);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  background: #ffffff;
+  overflow: hidden;
+  display: block;
+}
+
+/* Negative margin pulls each next card up to "stack" */
+.sticky-card-section + .sticky-card-section .sticky-card {
+  margin-top: -45vh;
+  z-index: 2;
+}
+
+/* Ensure proper z-index stacking order */
+.sticky-card-section:nth-child(1) .sticky-card { z-index: 1; }
+.sticky-card-section:nth-child(2) .sticky-card { z-index: 2; }
+.sticky-card-section:nth-child(3) .sticky-card { z-index: 3; }
+.sticky-card-section:nth-child(4) .sticky-card { z-index: 4; }
+.sticky-card-section:nth-child(5) .sticky-card { z-index: 5; }
+.sticky-card-section:nth-child(6) .sticky-card { z-index: 6; }
+.sticky-card-section:nth-child(7) .sticky-card { z-index: 7; }
+.sticky-card-section:nth-child(8) .sticky-card { z-index: 8; }
+.sticky-card-section:nth-child(9) .sticky-card { z-index: 9; }
+.sticky-card-section:nth-child(10) .sticky-card { z-index: 10; }
+
+/* Subtle hover effect (helps when you scroll slowly) */
+.sticky-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.sticky-card:hover > article {
+  box-shadow:
+    0 30px 70px rgba(15, 23, 42, 0.45),
+    0 0 0 1px rgba(148, 163, 184, 0.45);
+}
+
+@media (max-width: 768px) {
+  .sticky-card {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .sticky-card-section {
+    height: 100vh;
+  }
+  
+  .sticky-card-section + .sticky-card-section .sticky-card {
+    margin-top: -35vh;
+  }
+}
+

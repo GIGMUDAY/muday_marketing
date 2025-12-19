@@ -1,0 +1,189 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.magic-bento-card {
+  position: relative;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: #f3f4f6;
+  @apply dark:bg-[#060010];
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  @apply dark:border-white dark:border-opacity-10;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Ensure theme-based backgrounds override any inline styles */
+.magic-bento-card {
+  background-color: #f3f4f6 !important;
+}
+
+.dark .magic-bento-card {
+  background-color: #060010 !important;
+}
+
+/* Dark mode specific styles for dark backgrounds */
+.dark .magic-bento-card[style*="background-color: #000000"],
+.dark .magic-bento-card[style*="background-color:#000000"],
+.dark .magic-bento-card[style*="background-color: #060010"],
+.dark .magic-bento-card[style*="background-color:#060010"] {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .magic-bento-card[style*="background-color: #000000"] .magic-bento-card__title,
+.dark .magic-bento-card[style*="background-color:#000000"] .magic-bento-card__title,
+.dark .magic-bento-card[style*="background-color: #060010"] .magic-bento-card__title,
+.dark .magic-bento-card[style*="background-color:#060010"] .magic-bento-card__title {
+  color: #ffffff !important;
+}
+
+.dark .magic-bento-card[style*="background-color: #000000"] .magic-bento-card__description,
+.dark .magic-bento-card[style*="background-color:#000000"] .magic-bento-card__description,
+.dark .magic-bento-card[style*="background-color: #060010"] .magic-bento-card__description,
+.dark .magic-bento-card[style*="background-color:#060010"] .magic-bento-card__description {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark .magic-bento-card[style*="background-color: #000000"] .magic-bento-card__label,
+.dark .magic-bento-card[style*="background-color:#000000"] .magic-bento-card__label,
+.dark .magic-bento-card[style*="background-color: #060010"] .magic-bento-card__label,
+.dark .magic-bento-card[style*="background-color:#060010"] .magic-bento-card__label {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.magic-bento-card--border-glow {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 300px;
+  --glow-color: 0, 0, 0;
+
+  position: relative;
+}
+
+.magic-bento-card--border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 3px;
+  background: radial-gradient(circle at var(--glow-x) var(--glow-y),
+      rgba(var(--glow-color), calc(var(--glow-intensity) * 0.8)) 0%,
+      rgba(var(--glow-color), calc(var(--glow-intensity) * 0.5)) 20%,
+      rgba(var(--glow-color), calc(var(--glow-intensity) * 0.3)) 40%,
+      rgba(var(--glow-color), calc(var(--glow-intensity) * 0.15)) 60%,
+      transparent 80%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: calc(var(--glow-intensity) * 1.2);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+.magic-bento-card__header {
+  margin-bottom: 1rem;
+}
+
+.magic-bento-card__label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  @apply dark:bg-white dark:bg-opacity-20;
+  color: #000000;
+  @apply dark:text-white;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.magic-bento-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.magic-bento-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  @apply dark:text-white;
+  margin: 0;
+  line-height: 1.2;
+  font-family: 'Urbanist', serif;
+}
+
+.magic-bento-card__description {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.8);
+  @apply dark:text-gray-300;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+  font-family: 'Urbanist', serif;
+}
+
+.magic-bento-card__label {
+  font-family: 'Urbanist', serif;
+}
+
+.magic-bento-card--text-autohide .magic-bento-card__title,
+.magic-bento-card--text-autohide .magic-bento-card__description {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.magic-bento-card--text-autohide:hover .magic-bento-card__title,
+.magic-bento-card--text-autohide:hover .magic-bento-card__description {
+  opacity: 0.7;
+  transform: translateY(-5px);
+}
+
+.particle-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.global-spotlight {
+  position: fixed;
+  pointer-events: none;
+  z-index: 200;
+  mix-blend-mode: screen;
+}
+
+.bento-section {
+  position: relative;
+}

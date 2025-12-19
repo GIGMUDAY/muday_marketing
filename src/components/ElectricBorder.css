@@ -1,0 +1,73 @@
+.electric-border {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: #0a0a0a;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(82, 39, 255, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(82, 39, 255, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(82, 39, 255, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(82, 39, 255, 0.1) 0px, transparent 50%);
+}
+
+.eb-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.eb-layers {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.eb-stroke {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: var(--eb-border-width, 2px) solid var(--electric-border-color, #000000);
+  opacity: 0.8;
+}
+
+.eb-glow-1 {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 2px solid var(--electric-border-color, #000000);
+  opacity: 0.4;
+  filter: blur(4px);
+}
+
+.eb-glow-2 {
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid var(--electric-border-color, #000000);
+  opacity: 0.2;
+  filter: blur(8px);
+}
+
+.eb-background-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  background: radial-gradient(circle at center,
+      var(--electric-border-color, #000000) 0%,
+      transparent 70%);
+  opacity: 0.1;
+  filter: blur(12px);
+}
+
+.eb-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: transparent;
+  padding: 2px;
+}

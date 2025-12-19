@@ -1,0 +1,125 @@
+.outer-container {
+  width: 100%;
+}
+
+.step-circle-container {
+  width: 100%;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.step-indicator-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  gap: 8px;
+}
+
+.step-indicator {
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.step-indicator-inner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step-number {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.active-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.check-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background-color: #e5e7eb;
+  position: relative;
+  margin: 0 8px;
+}
+
+.step-connector-inner {
+  height: 100%;
+  background-color: #000000;
+}
+
+.step-content-default {
+  min-height: 200px;
+  padding: 24px 0;
+}
+
+.step-default {
+  padding: 16px;
+}
+
+.footer-container {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.footer-nav.spread {
+  justify-content: space-between;
+}
+
+.back-button,
+.next-button {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.back-button {
+  background-color: transparent;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+}
+
+.back-button:hover {
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+.back-button.inactive {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.next-button {
+  background-color: #000000;
+  color: white;
+}
+
+.next-button:hover {
+  background-color: #4220cc;
+}
