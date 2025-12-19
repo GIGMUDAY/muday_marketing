@@ -41,7 +41,19 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
     }
   }, [isOpen])
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (href: string) => (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault()
+    setIsOpen(false)
+    setServicesOpen(false)
+    
+    // Smooth scroll to section
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
+  const handleCloseMenu = () => {
     setIsOpen(false)
     setServicesOpen(false)
   }
@@ -87,8 +99,15 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
           <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-3">
             <motion.a
               href="#home"
+              onClick={(e) => {
+                e.preventDefault()
+                const element = document.querySelector('#home')
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              }}
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 cursor-pointer"
             >
               <img
                 src="/Muday Marketing Logo Icon-10.png"
@@ -119,7 +138,7 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               className="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm z-40"
-              onClick={handleLinkClick}
+              onClick={handleCloseMenu}
             />
 
             {/* Menu Panel */}
@@ -135,7 +154,7 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
                 <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800">
                   <h2 className="text-xl font-bold text-black dark:text-white">Menu</h2>
                   <button
-                    onClick={handleLinkClick}
+                    onClick={handleCloseMenu}
                     className="p-2 text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                     aria-label="Close menu"
                   >
@@ -155,7 +174,10 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
                       {item.hasDropdown ? (
                         <div>
                           <button
-                            onClick={() => setServicesOpen(!servicesOpen)}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              setServicesOpen(!servicesOpen)
+                            }}
                             className="w-full flex items-center justify-between py-4 text-left text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                           >
                             <span>{item.name}</span>
@@ -180,7 +202,7 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
                                     <a
                                       key={service}
                                       href="#services"
-                                      onClick={handleLinkClick}
+                                      onClick={handleLinkClick('#services')}
                                       className="block py-3 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors border-l-2 border-transparent hover:border-black dark:hover:border-white pl-4"
                                     >
                                       {service}
@@ -194,7 +216,7 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
                       ) : (
                         <a
                           href={item.href}
-                          onClick={handleLinkClick}
+                          onClick={handleLinkClick(item.href)}
                           className="block py-4 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors border-b border-gray-100 dark:border-gray-800"
                         >
                           {item.name}
@@ -208,7 +230,7 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
                 <div className="p-6 space-y-3 border-t border-gray-200 dark:border-gray-800">
                   <motion.a
                     href="#contact"
-                    onClick={handleLinkClick}
+                    onClick={handleLinkClick('#contact')}
                     whileTap={{ scale: 0.95 }}
                     className="block w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg text-center font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
                   >
@@ -218,7 +240,7 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
                     href="https://wa.me/251944750500"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={handleLinkClick}
+                    onClick={handleCloseMenu}
                     whileTap={{ scale: 0.95 }}
                     className="block w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg text-center font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
                   >

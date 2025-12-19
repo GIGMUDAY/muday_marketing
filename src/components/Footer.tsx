@@ -63,7 +63,14 @@ const Footer = () => {
                 >
                   <a
                     href="#services"
-                    className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-sm"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      const element = document.querySelector('#services')
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                      }
+                    }}
+                    className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-sm cursor-pointer"
                     style={{ fontFamily: '"Urbanist", serif', fontSize: '14px' }}
                   >
                     {service}
