@@ -13,7 +13,6 @@ import ScrollToTop from './components/ScrollToTop'
 import Slider from './components/home/slider'
 import Gallery from './components/Gallery'
 import Branding from './components/Branding'
-import Portfolio from './components/Portfolio'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -38,7 +37,6 @@ function App() {
       <Process />
       <Slider />
       <Gallery />
-
       <Team />
       <Contact />
       <Footer />
