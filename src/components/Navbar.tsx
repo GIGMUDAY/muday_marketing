@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronDown } from 'lucide-react'
+import { X } from 'lucide-react'
 import { ThemeToggle } from './ThemeToggle'
 
 interface NavbarProps {
@@ -9,19 +9,11 @@ interface NavbarProps {
 
 const Navbar = ({ isScrolled }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
-
-  const services = [
-    'Content Marketing',
-    'Branding & Design',
-    'Search Engine Optimization',
-    'Digital Marketing'
-  ]
 
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About Us', href: '#about' },
-    { name: 'Services', href: '#services', hasDropdown: true },
+    { name: 'Services', href: '#services' },
     { name: 'Branding', href: '#branding' },
     { name: 'Pricing', href: '#pricing' },
     { name: 'Industries', href: '#industries' },
@@ -44,7 +36,6 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
   const handleLinkClick = (href: string) => (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
     setIsOpen(false)
-    setServicesOpen(false)
     
     // Smooth scroll to section
     const element = document.querySelector(href)
@@ -55,7 +46,6 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
 
   const handleCloseMenu = () => {
     setIsOpen(false)
-    setServicesOpen(false)
   }
 
   return (
@@ -171,57 +161,13 @@ const Navbar = ({ isScrolled }: NavbarProps) => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      {item.hasDropdown ? (
-                        <div>
-                          <button
-                            onClick={(e) => {
-                              e.preventDefault()
-                              setServicesOpen(!servicesOpen)
-                            }}
-                            className="w-full flex items-center justify-between py-4 text-left text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
-                          >
-                            <span>{item.name}</span>
-                            <motion.div
-                              animate={{ rotate: servicesOpen ? 180 : 0 }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              <ChevronDown className="w-5 h-5" />
-                            </motion.div>
-                          </button>
-                          <AnimatePresence>
-                            {servicesOpen && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="overflow-hidden"
-                              >
-                                <div className="pl-4 space-y-2 pb-4">
-                                  {services.map((service) => (
-                                    <a
-                                      key={service}
-                                      href="#services"
-                                      onClick={handleLinkClick('#services')}
-                                      className="block py-3 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors border-l-2 border-transparent hover:border-black dark:hover:border-white pl-4"
-                                    >
-                                      {service}
-                                    </a>
-                                  ))}
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      ) : (
-                        <a
-                          href={item.href}
-                          onClick={handleLinkClick(item.href)}
-                          className="block py-4 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors border-b border-gray-100 dark:border-gray-800"
-                        >
-                          {item.name}
-                        </a>
-                      )}
+                      <a
+                        href={item.href}
+                        onClick={handleLinkClick(item.href)}
+                        className="block py-4 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors border-b border-gray-100 dark:border-gray-800"
+                      >
+                        {item.name}
+                      </a>
                     </motion.div>
                   ))}
                 </nav>
