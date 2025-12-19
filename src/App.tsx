@@ -38,7 +38,7 @@ function App() {
       <Process />
       <Slider />
       <Gallery />
-      <Portfolio />
+
       <Team />
       <Contact />
       <Footer />
